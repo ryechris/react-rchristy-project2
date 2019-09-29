@@ -211,51 +211,54 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
  * the new format.
  */
 
-// https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
- const isPlainObject = function (obj) {
- 	return Object.prototype.toString.call(obj) === '[object Object]';
+ // https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
+  const isPlainObject = function (obj) {
+  	return Object.prototype.toString.call(obj) === '[object Object]';
+  }
+ // https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
+
+ function formattedQuestion(question) {
+   return Object.keys(question).reduce((formattedQ, key) => {
+     const value = question[key]
+     if (isPlainObject(value)) {
+       formattedQ[key + 'votes'] = value.votes
+       formattedQ[key + 'text'] = value.text
+       return formattedQ
+     }
+     formattedQ[key] = value
+     return formattedQ
+   }, {})
  }
-// https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
 
-function formattedQuestion(question) {
-  return Object.keys(question).reduce((formattedQ, key) => {
-    const value = question[key]
-    if (isPlainObject(value)) {
-      formattedQ[key + 'votes'] = value.votes
-      formattedQ[key + 'text'] = value.text
-      return formattedQ
-    }
-    formattedQ[key] = value
-    return formattedQ
-  }, {})
-}
+ function getTheUsers (users) {
+   return Object.keys(users).reduce((theusers, id) => {
+     const user = users[id]
+     theusers[id] = {
+       ...user,
+       answers: Object.keys(user.answers)
+     }
+     console.log('Theusers: ', theusers)
+     return theusers
 
-function getTheUsers (users) {
-  return Object.keys(users).reduce((theusers, id) => {
-    const user = users[id]
-    theusers[id] = {
-      ...user,
-      answer: Object.keys(user.answers)
-    }
-    return theusers
-  }, {})
-}
+   }, {})
+ }
 
-function getTheQuestions(questions) {
-  const questionsIds = Object.keys(questions)
-  return questionsIds.reduce((thequestions, id) => {
-    thequestions[id] = formattedQuestion(questions[id])
-    return thequestions
-  }, {})
-}
+ function getTheQuestions(questions) {
+   const questionsIds = Object.keys(questions)
+   return questionsIds.reduce((thequestions, id) => {
+     thequestions[id] = formattedQuestion(questions[id])
+     return thequestions
+   }, {})
+ }
 
-// gets initial data in a plain object format
-export function getInitialData() {
-  return Promise.all([
-    _getUsers(),
-    _getQuestions()
-  ]).then(([users, questions]) => ({
-    users: getTheUsers(users),
-    questions: getTheQuestions(questions)
-  }))
-}
+ // gets initial data in a plain object format
+ export function getInitialData() {
+   return Promise.all([
+     _getUsers(),
+     _getQuestions()
+   ]).then(([users, questions]) => {
+     return {
+       users: getTheUsers(users),
+       questions: getTheQuestions(questions)
+     }})
+ }

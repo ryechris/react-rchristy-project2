@@ -159,7 +159,7 @@ export function _saveQuestion (question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
       }
-      
+
       users = {
         ...users,
         [authedUser]: {
@@ -204,3 +204,58 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 }
 
 
+/*
+ * _DATA.js gives the answers in array; this function set sthe answers' format
+ * to array, not object.
+ *  WIth each iteration, it returns the user object with the answeres in
+ * the new format.
+ */
+
+// https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
+ const isPlainObject = function (obj) {
+ 	return Object.prototype.toString.call(obj) === '[object Object]';
+ }
+// https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
+
+function formattedQuestion(question) {
+  return Object.keys(question).reduce((formattedQ, key) => {
+    const value = question[key]
+    if (isPlainObject(value)) {
+      formattedQ[key + 'votes'] = value.votes
+      formattedQ[key + 'text'] = value.text
+      return formattedQ
+    }
+    formattedQ[key] = value
+    return formattedQ
+  }, {})
+}
+
+function getTheUsers (users) {
+  return Object.keys(users).reduce((theusers, id) => {
+    const user = users[id]
+    theusers[id] = {
+      ...user,
+      answer: Object.keys(user.answers)
+    }
+    return theusers
+  }, {})
+}
+
+function getTheQuestions(questions) {
+  const questionsIds = Object.keys(questions)
+  return questionsIds.reduce((thequestions, id) => {
+    thequestions[id] = formattedQuestion(questions[id])
+    return thequestions
+  }, {})
+}
+
+// gets initial data in a plain object format
+export function getInitialData() {
+  return Promise.all([
+    _getUsers(),
+    _getQuestions()
+  ]).then(([users, questions]) => ({
+    users: getTheUsers(users),
+    questions: getTheQuestions(questions)
+  }))
+}

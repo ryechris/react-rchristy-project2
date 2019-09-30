@@ -24,18 +24,18 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <div>
+        <div className='dashboard-category'>
           <button
-            style={{textDecoration: showAnswered === false ? 'underline' : 'none'}}
+            style={{color: showAnswered === false ? 'green' : 'inherit'}}
             onClick={this.showUnanswered}
           >Unanswered</button>
           <span>    </span>
           <button
-            style={{textDecoration: showAnswered === true ? 'underline' : 'none'}}
+            style={{color: showAnswered === true ? 'green' : 'inherit'}}
             onClick={this.showAnswered}
           >Answered</button>
         </div>
-        <ul>
+        <ul className='dashboard-ul'>
           {list.map((q) => (
             <li key={q.id}>{q.id}</li>
           ))}
@@ -43,7 +43,6 @@ class Dashboard extends React.Component {
       </div>
     )
   }
-
 }
 
 function mapStateToProps({ authedUser, users, questions }) {

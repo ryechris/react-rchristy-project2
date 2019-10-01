@@ -1,5 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+function mapStateToProps({ authedUser, users, questions }) {
+  console.log('Users[authedUser: ', questions)
+  const answers = users[authedUser].answers
+
+  const answeredQs = answers.map((id) => questions[id])
+    .sort((a,b) => b.timestamp - a.timestamp)
+
+  const unansweredQs = Object.keys(questions)
+    .filter((id) => !answers.includes(id))
+    .map((id) => questions[id])
+    .sort((a,b) => b.timestamp - a.timestamp)
+
+  return {
+    answeredQs,
+    unansweredQs
+  }
+}
 
 class Dashboard extends React.Component {
   state = {
@@ -37,7 +56,9 @@ class Dashboard extends React.Component {
         </div>
         <ul className='dashboard-ul'>
           {list.map((q) => (
-            <li key={q.id}>{q.id}</li>
+            <li key={q.id}>
+              <Link to={`questions/${q.id}`}>{q.id}</Link>
+            </li>
           ))}
         </ul>
       </div>
@@ -45,23 +66,6 @@ class Dashboard extends React.Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
-  console.log('Users[authedUser: ', questions)
-  const answers = users[authedUser].answers
 
-  const answeredQs = answers
-    .map((id) => questions[id])
-    .sort((a,b) => b.timestamp - a.timestamp)
-
-  const unansweredQs = Object.keys(questions)
-    .filter((id) => !answers.includes(id))
-    .map((id) => questions[id])
-    .sort((a,b) => b.timestamp - a.timestamp)
-
-  return {
-    answeredQs,
-    unansweredQs
-  }
-}
 
 export default connect(mapStateToProps)(Dashboard)

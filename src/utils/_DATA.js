@@ -4,7 +4,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://pbs.twimg.com/media/C_n7td6XcAAe5ii.jpg',
+    avatarURL: 'https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-female2-512.png',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -16,7 +16,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://avatars0.githubusercontent.com/u/2933430?s=400&v=4',
+    avatarURL: 'https://avatars0.githubusercontent.com/u/2933430',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -26,7 +26,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://avatars1.githubusercontent.com/u/810438?s=460&v=4',
+    avatarURL: 'https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -173,7 +173,7 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer ({ authedUser, id, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -182,18 +182,18 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           ...users[authedUser],
           answers: {
             ...users[authedUser].answers,
-            [qid]: answer
+            [id]: answer
           }
         }
       }
 
       questions = {
         ...questions,
-        [qid]: {
-          ...questions[qid],
+        [id]: {
+          ...questions[id],
           [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            ...questions[id][answer],
+            votes: questions[id][answer].votes.concat([authedUser])
           }
         }
       }
@@ -223,14 +223,18 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
    return Object.keys(question).reduce((formattedQ, key) => {
      const value = question[key]
      if (isPlainObject(value)) {
-       formattedQ[key + 'votes'] = value.votes
-       formattedQ[key + 'text'] = value.text
+       formattedQ[key + 'Votes'] = value.votes
+       formattedQ[key + 'Text'] = value.text
        return formattedQ
      }
      formattedQ[key] = value
      return formattedQ
    }, {})
  }
+
+export function saveQuestion (q) {
+  return _saveQuestion(q).then((n) => formattedQuestion(n))
+}
 
  function getTheUsers (users) {
    return Object.keys(users).reduce((theusers, id) => {
@@ -264,3 +268,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
        questions: getTheQuestions(questions)
      }})
  }
+
+export function saveQuestionAnswer (params) {
+  return _saveQuestionAnswer(params)
+}

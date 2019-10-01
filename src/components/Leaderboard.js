@@ -9,8 +9,8 @@ function Leaderboard ({users}) {
           <img src={user.avatarURL} alt={`${user.name}'s avatar`} />
           <div>
             <h1>{user.name}</h1>
-            <p>{user.questions}</p>
-            <p>{user.answers}</p>
+            <p>Number of Questions posted: {user.questions}</p>
+            <p>Number of Questions answered: {user.answers}</p>
           </div>
         </li>
       ))}

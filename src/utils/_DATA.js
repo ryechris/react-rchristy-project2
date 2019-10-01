@@ -4,7 +4,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: '../../images/snow.jpg',
+    avatarURL: 'https://pbs.twimg.com/media/C_n7td6XcAAe5ii.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -16,7 +16,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: '../../images/tyler.jpg',
+    avatarURL: 'https://avatars0.githubusercontent.com/u/2933430?s=400&v=4',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -26,7 +26,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: '../../images/leaf.jpg',
+    avatarURL: 'https://avatars1.githubusercontent.com/u/810438?s=460&v=4',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -204,10 +204,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
 }
 
 
-/*
- * _DATA.js gives the answers in array; this function set sthe answers' format
+/* We're trying to retrieve the data in the format best suited to work with our UI code.
+ * _DATA.js gives the answers in a plain object; this function sets the answers' format
  * to array, not object.
- *  WIth each iteration, it returns the user object with the answeres in
+ * With each iteration, it returns the user object with the answeres in
  * the new format.
  */
 
@@ -215,8 +215,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   const isPlainObject = function (obj) {
   	return Object.prototype.toString.call(obj) === '[object Object]';
   }
- // https://gomakethings.com/how-to-check-if-something-is-an-object-with-vanilla-javascript/
+//
 
+
+//
  function formattedQuestion(question) {
    return Object.keys(question).reduce((formattedQ, key) => {
      const value = question[key]

@@ -29,10 +29,10 @@ class Question extends Component {
       .reduce((total, key) => total + question[key].length, 0);
 
     return (
-      <div>
-        <h1>Would You Rather</h1>
+      <div className='poll-container'>
+        <h1 className='wyr'>Would You Rather</h1>
 
-        <div className=''>
+        <div className='poll-author'>
           By <img src={authorAvatar} alt="Author's avatar" />
         </div>
 
@@ -47,10 +47,10 @@ class Question extends Component {
                     this.handleAnswer(key.slice(0,9))
                   }
                 }}
-                className={`${vote === key.slice(0,9) ? 'selected' : ''}`}
+                className={`option ${vote === key.slice(0,9) ? 'selected' : ''}`}
               >{vote === null
                   ? question[key]
-                  : <div className=''>
+                  : <div className='result'>
                       <span>{question[key]}</span>
                       <span>{getPercentage(count, totalVotes)}% ({count})</span>
                     </div>}

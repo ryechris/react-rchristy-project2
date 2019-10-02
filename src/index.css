@@ -28,6 +28,16 @@ html {
   margin-top: 2em;
 }
 
+.dashboard-ul a {
+  text-decoration: none;
+  color: black;
+}
+
+.dashboard-ul a:hover {
+  color: blue;
+  transition: 100ms;
+}
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -77,4 +87,54 @@ html {
 .btn {
   margin-left: 30%;
   margin-top: 3em;
+}
+
+.wyr {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.poll-author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poll-author img {
+  width: 4em;
+  height: 4em;
+  border-radius: 2em;
+  margin-left: 1%;
+}
+
+.option {
+  border: 1px solid black;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  list-style-type: none;
+  width: 30em;
+  height: 10em;
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: center;
+  padding-top: 8em;
+  padding-bottom: auto;
+  font-size: 1.3em;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+.poll-container ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
 }

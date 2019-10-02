@@ -22,7 +22,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className=''>
-            <Nav />
+            <Nav user={this.props.authedUser} />
             {this.props.loading === true
               ? null
               : <div>

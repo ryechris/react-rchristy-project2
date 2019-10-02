@@ -12,7 +12,7 @@ class AuthButton extends Component {
   }
   render() {
     return (
-      <button onClick={this.signout} >Sign Out</button>
+      <button className='btn' onClick={this.signout} >Sign Out</button>
     )
   }
 }

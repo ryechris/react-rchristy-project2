@@ -33,13 +33,13 @@ class Login extends Component {
     }
     return (
       <div>
-        <label for='user-select'></label>
+        <label htmlFor='user-select'>Please select a user and log in.</label>
         <select id='user-select' onChange={this.handleInputChange}>
           <option value=''>--select a user--</option>
           {Object.keys(this.props.users).map((id) => {
             const nm = this.props.users[id].name.split(' ')
             return (
-              <option id={id} value={id}>{nm[0]} {nm[1]}</option>
+              <option key={id} value={id}>{nm[0]} {nm[1]}</option>
             )
           })}
         </select>

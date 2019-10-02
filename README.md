@@ -1,3 +1,26 @@
+# Would You Rather app
+
+
+This project creates a Would You Rather game.
+
+## Would You Rather
+
+It's a game where you pick one of two options.
+
+
+## How to Launch the app
+
+click on the green download icon and then download zip.
+or do a git clone https://blabla
+
+navigate to the project root directory
+
+run  `npm install` to install dependencies.
+
+then, run `npm start`
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

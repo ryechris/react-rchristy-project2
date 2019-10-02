@@ -149,6 +149,20 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   }
 }
 
+/*
+ * export function _saveUser (user) {
+ *   make this function here.
+ *   return {
+ *     id: username,
+ *     name: name,
+ *     avatarURL: ,
+ *     answers: {},
+ *     questions: []
+ *   }
+ * }
+ */
+
+
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
@@ -217,8 +231,6 @@ export function _saveQuestionAnswer ({ authedUser, id, answer }) {
   }
 //
 
-
-//
  function formattedQuestion(question) {
    return Object.keys(question).reduce((formattedQ, key) => {
      const value = question[key]

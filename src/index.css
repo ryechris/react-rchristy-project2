@@ -24,6 +24,14 @@ html {
   line-height: 2em;
   list-style: none;
   font-size: 1.25em;
+  margin-left: 30%;
+  margin-top: 2em;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .user {
@@ -36,4 +44,37 @@ html {
   height: 4em;
   border-radius: 2em;
   margin-right: 2em;
+}
+
+.selected {
+  border: 0.5em solid blue;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  font-family: inherit;
+  text-decoration: none;
+  padding-top: 1em;
+  padding-bottom: 4em;
+}
+
+.nav ul li {
+  margin-left: 2em;
+  margin-right: 2em;
+  list-style-type: none;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn {
+  margin-left: 30%;
+  margin-top: 3em;
 }

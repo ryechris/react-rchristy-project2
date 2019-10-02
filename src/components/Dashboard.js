@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 function mapStateToProps({ authedUser, users, questions }) {
   console.log('Users[authedUser: ', questions)
-  const answers = users[authedUser].answers
-
+  let answers;
+  authedUser ? answers = users[authedUser].answers : answers = []
   const answeredQs = answers.map((id) => questions[id])
     .sort((a,b) => b.timestamp - a.timestamp)
 
@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
     const list = showAnswered === true ? answeredQs : unansweredQs
 
     return (
-      <div>
+      <div className='dashboard'>
         <div className='dashboard-category'>
           <button
             style={{color: showAnswered === false ? 'green' : 'inherit'}}

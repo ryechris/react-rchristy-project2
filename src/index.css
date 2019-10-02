@@ -56,10 +56,6 @@ html {
   margin-right: 2em;
 }
 
-.selected {
-  border: 0.5em solid blue;
-}
-
 .nav ul {
   display: flex;
   justify-content: center;
@@ -120,10 +116,16 @@ html {
   padding-top: 8em;
   padding-bottom: auto;
   font-size: 1.3em;
+  border-radius: 0.3em;
 }
 
 .option:hover {
   cursor: pointer;
+}
+
+.selected {
+  border: 0.5em solid blue;
+  border-radius: 0.3em;
 }
 
 .poll-container ul {

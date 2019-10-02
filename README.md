@@ -1,91 +1,32 @@
 # Would You Rather app
 
 
-This project creates a Would You Rather game.
+This project creates a simple Would You Rather game, which is a game where you pick one of two options; the game asks you, 'Which one would you rather pick?'
 
-## Would You Rather
+In this app, users are able to answer questions, post new questions,  see how other people have voted, and see the ranking of users on the leaderboard.
 
-It's a game where you pick one of two options.
+The app's UI is governed by React and its State is managed by Redux.
 
 
 ## How to Launch the app
 
-click on the green download icon and then download zip.
-or do a git clone https://blabla
+1. Download the project
+a. You can go to your Terminal or CLI and type in the following:
+```
+git clone https://github.com/call900913/react-rchristy-project2
+```
 
-navigate to the project root directory
+b. Or, alternatively, you can go [here](https://github.com/call900913/react-rchristy-project2), click on the green `Clone or download` button, and then click on `Download ZIP`.
 
-run  `npm install` to install dependencies.
+2. Once the download is complete, navigate to the project root directory from your Command Line.
 
-then, run `npm start`
+3. Run `npm install` to install dependencies.
+
+4. After installing the dependencies, run `npm start`.
 
 
+## Dependencies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You do need to need to have Node.js installed.
+You can check whether you have Node installed by typing `node -v` on your command line.
+If it does not show you a version number in the likes of `vX.Y.Z`, you can go [here](https://nodejs.org/en/) to find out how to download it.
